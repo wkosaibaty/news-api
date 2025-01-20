@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
 use Illuminate\Foundation\Configuration\Middleware;
@@ -24,6 +25,11 @@ return Application::configure(basePath: dirname(__DIR__))
 
             if ($e instanceof BadRequestHttpException) {
                 $code = 400;
+                $message = $e->getMessage();
+            }
+
+            if ($e instanceof AuthenticationException) {
+                $code = 401;
                 $message = $e->getMessage();
             }
 
