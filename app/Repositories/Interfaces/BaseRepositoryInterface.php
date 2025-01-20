@@ -9,4 +9,5 @@ interface BaseRepositoryInterface
 {
     public function all(): Collection;
     public function find(int $id): Model;
+    public function findOrCreate(array $attributes = [], array $values = []): Model;
 }

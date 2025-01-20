@@ -21,4 +21,8 @@ class BaseRepository implements BaseRepositoryInterface
     public function find(int $id): Model {
         return $this->model->findOrFail($id);
     }
+
+    public function findOrCreate(array $attributes = [], array $values = []): Model {
+        return $this->model->firstOrCreate($attributes, $values);
+    }
 }

@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Http\Resources\AuthorResource;
 use App\Repositories\Interfaces\AuthorRepositoryInterface;
-use Illuminate\Http\Request;
 
 class AuthorController extends Controller
 {
