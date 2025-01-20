@@ -8,6 +8,7 @@ use App\Repositories\Interfaces\CategoryRepositoryInterface;
 class CategoryController extends Controller
 {
     private CategoryRepositoryInterface $categoryRepository;
+
     public function __construct(CategoryRepositoryInterface $categoryRepository) {
         $this->categoryRepository = $categoryRepository;
     }
