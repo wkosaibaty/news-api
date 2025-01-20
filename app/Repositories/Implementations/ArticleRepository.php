@@ -22,7 +22,7 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
     }
 
     public function find(int $id): Model {
-        return Category::where('id', $id)
+        return Article::where('id', $id)
             ->with('category')
             ->with('author')
             ->with('source')
