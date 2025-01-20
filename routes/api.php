@@ -18,9 +18,11 @@ Route::prefix('auth')->group(function () {
 });
 
 Route::get('/categories', [CategoryController::class, 'index']);
-Route::get('/articles', [ArticleController::class, 'index']);
+Route::get('/authors', [AuthorController::class, 'index']);
+Route::get('/sources', [SourceController::class, 'index']);
 
-Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/authors', [AuthorController::class, 'index']);
-    Route::get('/sources', [SourceController::class, 'index']);
+Route::prefix('articles')->group(function () {
+    Route::get('/', [ArticleController::class, 'index']);
+    Route::get('/{id}', [ArticleController::class, 'show']);
 });
+
