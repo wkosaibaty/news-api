@@ -7,13 +7,10 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\FeedController;
 use App\Http\Controllers\PreferenceController;
 use App\Http\Controllers\SourceController;
+use App\Http\Controllers\UserController;
 use App\Http\Middleware\SetUserIfExists;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
 
 Route::prefix('auth')->group(function () {
     Route::post('/login', [AuthController::class, 'login']);
@@ -33,6 +30,8 @@ Route::prefix('articles')->group(function () {
 
 
 Route::middleware('auth:sanctum')->group(function () {
+    Route::get('/user', [UserController::class, 'index']);
+
     Route::prefix('preferences')->group(function () {
         Route::get('/', [PreferenceController::class, 'index']);
         Route::post('/', [PreferenceController::class, 'store']);
