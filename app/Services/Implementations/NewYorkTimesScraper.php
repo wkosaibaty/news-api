@@ -71,7 +71,7 @@ class NewYorkTimesScraper implements ArticleScraperInterface
     }
 
     private function getImageUrl($article) {
-        if(!empty($article['multimedia'])) {
+        if(empty($article['multimedia'])) {
             return null;
         }
         return $article['multimedia'][0]['url'];
