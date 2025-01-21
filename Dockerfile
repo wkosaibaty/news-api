@@ -30,6 +30,6 @@ COPY ./docker/cronjob /etc/cron.d/laravel-cron
 RUN chmod 0644 /etc/cron.d/laravel-cron
 RUN crontab /etc/cron.d/laravel-cron
 
-CMD ["sh", "-c", "php artisan migrate && cron && apache2-foreground"]
+CMD ["sh", "-c", "php artisan migrate && php artisan app:scrape-news-articles news-api && php artisan app:scrape-news-articles nyt && php artisan app:scrape-news-articles guardian && cron && apache2-foreground"]
 
 EXPOSE 80
