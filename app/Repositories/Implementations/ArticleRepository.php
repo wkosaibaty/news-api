@@ -17,7 +17,9 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
     }
 
     public function paginate(array $filters = [], $page = 1, $pageSize = 10): LengthAwarePaginator {
-        $query = $this->buildQuery($filters)->with('author');
+        $query = $this->buildQuery($filters)
+            ->with('author')
+            ->orderBy('published_at', 'desc');
         return $query->paginate($pageSize, ['*'], 'page', $page);
     }
 
@@ -46,6 +48,18 @@ class ArticleRepository extends BaseRepository implements ArticleRepositoryInter
 
         if (!empty($filters['source_id'])) {
             $query->where('source_id', $filters['source_id']);
+        }
+
+        if (!empty($filters['category_ids'])) {
+            $query->whereIn('category_id', $filters['category_ids']);
+        }
+
+        if (!empty($filters['source_ids'])) {
+            $query->whereIn('source_id', $filters['source_ids']);
+        }
+
+        if (!empty($filters['author_ids'])) {
+            $query->whereIn('author_id', $filters['author_ids']);
         }
 
         if (!empty($filters['published_at_from'])) {
