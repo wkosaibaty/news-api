@@ -10,3 +10,4 @@ Artisan::command('inspire', function () {
 
 Schedule::command(ScrapeNewsArticles::class, ['news-api'])->hourly();
 Schedule::command(ScrapeNewsArticles::class, ['nyt'])->hourly();
+Schedule::command(ScrapeNewsArticles::class, ['guardian'])->hourly();

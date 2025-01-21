@@ -8,5 +8,9 @@ return [
     "nyt" => [
         "url" => env("NY_TIMES_URL", ''),
         "api_key" => env("NY_TIMES_KEY", ''),
+    ],
+    "guardian" => [
+        "url" => env("GUARDIAN_URL", ''),
+        "api_key" => env("GUARDIAN_KEY", ''),
     ]
 ];
